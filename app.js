@@ -35,7 +35,8 @@ App({
     this.getLocation()
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    domain:''
   },
   //获取当前位置
   getLocation:function(){
