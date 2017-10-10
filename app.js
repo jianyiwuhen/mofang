@@ -32,8 +32,36 @@ App({
         }
       }
     })
+    this.getLocation()
   },
   globalData: {
     userInfo: null
+  },
+  //获取当前位置
+  getLocation:function(){
+    var that=this;
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+        that.globalData.latitude = res.latitude
+        that.globalData.longitude= res.longitude
+        that.loadCity(res.longitude, res.latitude)
+      }
+      })
+  },
+  loadCity: function (longitude, latitude) {
+    var that = this
+    wx.request({
+      url: 'https://api.map.baidu.com/geocoder/v2/?ak=EjKYHmC3hj9ezfw9maDwgRyY5lPIoYK5&location=' + latitude + ',' + longitude + '&output=json',
+      data: {},
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        var city = res.data.result.addressComponent.city
+        that.globalData.cityName = city
+      }
+    })
   }
+
 })

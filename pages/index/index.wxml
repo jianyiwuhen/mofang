@@ -8,6 +8,6 @@
     </block>
   </view>
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    <button class="user-motto" bindtap="toMap">{{motto}}</button>
   </view>
 </view>
