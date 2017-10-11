@@ -2,13 +2,20 @@ const app = getApp()
 
 Page({
   data:{
-    marks:[]
+    markers: [{
+      latitude: 31.2443500000,
+      longitude: 121.4899400000,
+      title:'浦东新区芳华路22号7号楼601'
+    }]
   }, onReady: function (e) {
+    this.data.latitude=app.globalData.latitude
+    this.data.longitude=app.globalData.longitude
     // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('map')
     this.getCenterLocation()
     this.moveToLocation()
-    //this.includePoints()
+    //this.translateMarker()
+    this.includePoints()
 
   },
   onShareAppMessage: function (res) {
@@ -45,18 +52,13 @@ Page({
   }, 
   //缩放视野展示所有经纬度	
   includePoints: function () {
+    console.log(app.globalData.latitude)
     this.mapCtx.includePoints({
       padding: [10],
       points: [{
-        latitude: 31.2443500000,
-        longitude: 121.4899400000,
-      }, {
-          latitude: 31.2447829588,
-          longitude: 121.4855718613,
-        }, {
-          latitude: 31.2483602503,
-          longitude: 121.4842200279,
-        }]
+        latitude: app.globalData.latitude,
+        longitude: app.globalData.longitude,
+      }]
     })
   },
   onLoad: function () {

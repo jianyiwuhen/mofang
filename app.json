@@ -2,7 +2,9 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/map/map"
+    "pages/map/map",
+    "pages/mfIndex/mfIndex",
+    "pages/houseList/houseList"
   ],
   "window":{
     "backgroundTextStyle":"light",
