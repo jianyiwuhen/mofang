@@ -5,9 +5,18 @@ Page({
     markers: [{
       latitude: 31.2443500000,
       longitude: 121.4899400000,
-      title:'浦东新区芳华路22号7号楼601'
+      callout:{
+        content:'圣诞节快乐分手的距离福建省地方水电开发经理',
+        display:'BYCLICK',
+        borderRadius:'10',
+        padding:10,
+        color:'#000'
+        
+      }
     }]
+
   }, onReady: function (e) {
+
     this.data.latitude=app.globalData.latitude
     this.data.longitude=app.globalData.longitude
     // 使用 wx.createMapContext 获取 map 上下文
@@ -16,7 +25,14 @@ Page({
     this.moveToLocation()
     //this.translateMarker()
     this.includePoints()
-
+    wx.openLocation({
+      latitude: 31.2443500000,
+      longitude: 121.4899400000,
+      name:"测试",
+      success:function(){
+        
+      }
+    })
   },
   onShareAppMessage: function (res) {
 
@@ -52,7 +68,6 @@ Page({
   }, 
   //缩放视野展示所有经纬度	
   includePoints: function () {
-    console.log(app.globalData.latitude)
     this.mapCtx.includePoints({
       padding: [10],
       points: [{

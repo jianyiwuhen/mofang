@@ -1,0 +1,3 @@
+<view>
+  <view bindtap='toMap' class="list-hr">去地图页面</view>
+</view>

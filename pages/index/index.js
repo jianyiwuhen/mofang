@@ -50,7 +50,7 @@ Page({
   toMfIndex:function(){
      setTimeout(function(){
        wx.navigateTo({
-         url: '../map/map'
+         url: '../houseList/houseList'
        })
      },1000)
   },
