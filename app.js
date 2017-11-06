@@ -44,7 +44,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    domain:''
+    domain:'',
+    address:''
   },
   //获取当前位置
   getLocation:function(){
@@ -69,6 +70,7 @@ App({
       success: function (res) {
         var city = res.data.result.addressComponent.city
         that.globalData.cityName = city
+        that.globalData.address = res.data.result.addressComponent.district + res.data.result.addressComponent.street + res.data.result.addressComponent.street_number
       }
     })
   }

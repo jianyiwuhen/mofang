@@ -4,12 +4,15 @@
     "pages/logs/logs",
     "pages/map/map",
     "pages/mfIndex/mfIndex",
-    "pages/houseList/houseList"
+    "pages/houseList/houseList",
+    "pages/near/near",
+    "pages/order/order",
+    "pages/my/my"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#008de1",
     "navigationBarTitleText": "登录",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"#fff"
   }
 }

@@ -1,0 +1,13 @@
+<view class="order">
+  <view class="userinfo">
+    <block >
+
+    </block>
+  </view>
+  <view class='footer'>
+     <view class="fa fa-home fa-lg " bindtap="toIndex"><label>主页</label></view>
+     <view class="fa fa-map-marker fa-lg "  bindtap="toNearPage"><label>附近</label></view>
+     <view class="fa fa-th-large active" bindtap="toOrderPage"><label>订单</label></view>
+     <view class="fa fa-user-o " bindtap="toMyPage"><label>我的</label></view>
+  </view>
+</view>

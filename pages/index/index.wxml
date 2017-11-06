@@ -1,10 +1,17 @@
 <!--index.wxml-->
-<view class="container">
+<view class="index">
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 授权登录 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+    <view class="address">
+      当前位置：{{address}}
+    </view>
+    <view class='search'>
+      <input type='text' placeholder="输入一个店铺名或商品名"/>
+    </view>
+  </view>
+  <view class='footer'>
+     <view class="fa fa-home fa-lg active" ><label>主页</label></view>
+     <view class="fa fa-map-marker fa-lg"  bindtap="toNearPage"><label>附近</label></view>
+     <view class="fa fa-th-large " bindtap="toOrderPage"><label>订单</label></view>
+     <view class="fa fa-user-o " bindtap="toMyPage"><label>我的</label></view>
   </view>
 </view>

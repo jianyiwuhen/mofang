@@ -1,21 +1,21 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.index{
+  font-size:14px;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.index .address{
+  color:#fff;
+  background-color: #008de1;
+  padding:5px 5%
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.index .search{
+    background-color: #008de1;
+    padding:10px
 }
-
-.usermotto {
-  margin-top: 200px;
+.index .search input[type='text']{
+  background: #fff;
+  width: 90%;
+  text-align: center;
+  padding:0 5%;
+  height:25px;
+  
 }
