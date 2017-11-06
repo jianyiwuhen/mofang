@@ -6,6 +6,22 @@
     </view>
     <view class='search'>
       <input type='text' placeholder="输入一个店铺名或商品名"/>
+      <label class="sysLb"><image class='sysIcon'  src="../images/sys.png" bindtap="findSys"></image></label>
+    </view>
+    <view class='type'>
+      <view class='imgHr' ><image   src="../images/food.png" ></image><view>美食</view></view>
+      <view class='imgHr' ><image   src="../images/drink.png" ></image><view>饮料</view></view>
+      <view class='imgHr'><image   src="../images/fruit.png" ></image><view>水果</view></view>
+    </view>
+    <view style='padding:0 1%'>
+      <swiper indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{imgUrls}}">
+          <swiper-item>
+            <image src="{{item}}" class="slide-image"/>
+          </swiper-item>
+        </block>
+      </swiper>
     </view>
   </view>
   <view class='footer'>

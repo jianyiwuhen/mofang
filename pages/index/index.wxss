@@ -13,9 +13,42 @@
 }
 .index .search input[type='text']{
   background: #fff;
-  width: 90%;
-  text-align: center;
+  width: 80%;
   padding:0 5%;
   height:25px;
   
+}
+.index .sysLb{
+  background-color: #fff;
+  position: absolute;
+  right:8%;
+  top:40px;
+  height:25px;
+  padding-right:10px;
+}
+.index .sysIcon{
+  width: 20px;
+  height:20px;
+  display:inline-block;
+  right:5%;
+  z-index:100;
+  margin-top:2px;
+}
+.index .type{
+  padding:30px 5%;
+}
+.index .type image{
+  width:30px;
+  height: 30px;
+}
+.index .imgHr{
+    width: 25%;
+    display: inline-block;
+    text-align: left;
+    color:#666;
+    font-size: 12px;
+}
+.index .slide-image ,.index swiper {
+  width:100%;
+  height:100px;
 }

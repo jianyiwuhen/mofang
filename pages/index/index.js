@@ -5,9 +5,19 @@ const app = getApp()
 Page({
   data: {
     motto: '首页',
-    userInfo: {}
+    userInfo: {},
+    imgUrls: [
+      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+    ],
+    indicatorDots: true,
+    autoplay: true,
+    interval: 3000,
+    duration: 1000
   },
   onLoad: function () {
+
     wx.setNavigationBarTitle({ title: '首页' })
     if (app.globalData.userInfo) {
       this.setData({
@@ -35,14 +45,16 @@ Page({
         }
       })
     }
+    //设置当前位置
     var that = this;
-    setTimeout(function () {
-      that.setData(
-        {
+    var adIn=setInterval(function(){
+      if (app.globalData.address!=undefined){
+        that.setData({
           address: app.globalData.address
-        }
-      )
-    }, 3000)
+        })
+        clearInterval(adIn)
+      }
+    },1000)
   },
   onReady: function () {
 
@@ -56,11 +68,9 @@ Page({
     })
   },
   toMfIndex:function(){
-     setTimeout(function(){
-       wx.navigateTo({
-         url: '../houseList/houseList'
-       })
-     },1000)
+    wx.navigateTo({
+      url: '../houseList/houseList'
+    })
   },
   toMap:function(){
     wx.navigateTo({
@@ -82,7 +92,15 @@ Page({
       url: '../order/order'
     })
   },
+  //扫一扫方法
+  findSys:function(){
+    wx.scanCode({
+      success: function (result, scanType, charSet, path){
+      }
+    })
+  },
   onShareAppMessage: function () {
 
   }
+
 })
