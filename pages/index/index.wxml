@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="index">
+<scroll-view class="index" scroll-y="true">
   <view class="userinfo">
     <view class="address">
       当前位置：{{address}}
@@ -23,6 +23,31 @@
         </block>
       </swiper>
     </view>
+    <view class='hr'></view>
+    <view class="cpPanel">
+       <view class="cpTop">人气推荐</view>
+        <view wx:for="{{companyList}}" class="companyInfo">
+           <view class='cpImg'><image  src="{{item.img}}" ></image></view>
+           <view class="cpRight">
+              <view class="cpName">{{item.name}}</view>
+              <view class='cpPfPanel'>
+                  <block wx:for="{{stars}}" wx:for-item="itemName">
+                      <image class="star-image" style="width:10px;height:10px;left: {{itemName*150}}rpx" src="{{item.pingfen > itemName ?(item.pingfen-itemName == 0.5?halfSrc:selectedSrc) : normalSrc}}">
+              <!-- <view class="item" data-key="{{itemName+0.5}}" bindtap="selectLeft"></view>
+                        <view class="item" data-key="{{itemName+1}}" bindtap="selectRight"></view>
+                        -->
+                      </image>
+                    </block><label class='cpPf'>{{item.pingfen}}分</label>
+                    <label class='monNum'>月订{{item.monthYd}}单</label>
+                </view>
+                <view class='cpBottom'>
+                     <label>联系商家</label> | 
+                     <label>导航</label>
+                     <label class='position'>{{item.position}}m</label>
+                </view>
+           </view>
+        </view>
+    </view>
   </view>
   <view class='footer'>
      <view class="fa fa-home fa-lg active" ><label>主页</label></view>
@@ -30,4 +55,4 @@
      <view class="fa fa-th-large " bindtap="toOrderPage"><label>订单</label></view>
      <view class="fa fa-user-o " bindtap="toMyPage"><label>我的</label></view>
   </view>
-</view>
+</scroll-view>

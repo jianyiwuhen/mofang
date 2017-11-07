@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+var bmap = require('../lib/bmap-wx.min.js'); 
 Page({
   data: {
     motto: '首页',
@@ -14,7 +14,34 @@ Page({
     indicatorDots: true,
     autoplay: true,
     interval: 3000,
-    duration: 1000
+    duration: 1000,
+    companyList:[
+        {
+          name:"CoCo都可",
+          position:500,
+          pingfen:4.5,
+          monthYd:100,
+          img:'http://img3.imgtn.bdimg.com/it/u=689314955,515992096&fm=27&gp=0.jpg'
+        },
+        {
+          name: "CoCo都可",
+          position: 500,
+          pingfen: 4.5,
+          monthYd: 100,
+          img: 'http://img3.imgtn.bdimg.com/it/u=689314955,515992096&fm=27&gp=0.jpg'
+        }, {
+          name: "CoCo都可",
+          position: 500,
+          pingfen: 4.5,
+          monthYd: 100,
+          img: 'http://img3.imgtn.bdimg.com/it/u=689314955,515992096&fm=27&gp=0.jpg'
+        }
+
+    ],
+    stars: [0, 1, 2, 3, 4],
+    normalSrc: '../images/normal.png',
+    selectedSrc: '../images/selected.png',
+    halfSrc: '../images/half.png'
   },
   onLoad: function () {
 
@@ -45,16 +72,29 @@ Page({
         }
       })
     }
-    //设置当前位置
+    //百度地图获取当前位置
     var that = this;
-    var adIn=setInterval(function(){
-      if (app.globalData.address!=undefined){
-        that.setData({
-          address: app.globalData.address
-        })
-        clearInterval(adIn)
-      }
-    },1000)
+    
+    var BMap = new bmap.BMapWX({
+      ak: app.globalData.baiduAk
+    }); 
+    BMap.regeocoding({
+      fail: function (data) {
+        console.log(data);
+      },
+      success: function (data) {
+        //返回数据内，已经包含经纬度    
+        var ad = data.originalData.result;
+          that.setData({
+            address: ad.formatted_address.replace(ad.addressComponent.province, '')
+          })
+          app.globalData.latitude = data.wxMarkerData[0].latitude
+          app.globalData.longitude = data.wxMarkerData[0].longitude
+          app.globalData.cityCode = ad.cityCode
+        //把所有数据放在初始化data内    
+
+      }     
+    })
   },
   onReady: function () {
 
@@ -101,6 +141,24 @@ Page({
   },
   onShareAppMessage: function () {
 
-  }
+  },
+/*  selectLeft: function (e) {
+    var key = e.currentTarget.dataset.key
+    if (this.data.key == 0.5 && e.currentTarget.dataset.key == 0.5) {
+      //只有一颗星的时候,再次点击,变为0颗
+      key = 0;
+    }
+    this.setData({
+      key: key
+    })
+
+  },
+  //点击左边,整颗星
+  selectRight: function (e) {
+    var key = e.currentTarget.dataset.key
+    this.setData({
+      key: key
+    })
+  }*/
 
 })
