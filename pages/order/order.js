@@ -6,7 +6,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+     orderList:[
+        {
+         name: "CoCo都可",
+         img: 'http://img3.imgtn.bdimg.com/it/u=689314955,515992096&fm=27&gp=0.jpg',
+         orderTime:'2017-11-08 13:56',
+         orderMoney:'15',
+         status:"1",
+         goods:[{
+            goodsName:'白菜',
+            price:'10'
+         }, {
+           goodsName: '白菜1',
+           price: '12'
+         }]
+       }, {
+         name: "CoCo都可",
+         img: 'http://img3.imgtn.bdimg.com/it/u=689314955,515992096&fm=27&gp=0.jpg',
+         orderTime: '2017-11-08 13:56',
+         orderMoney: '15',
+         status: "2",
+         goods: [{
+           goodsName: '白菜',
+           price: '10'
+         }, {
+           goodsName: '白菜1',
+           price: '12'
+         }]
+       }
+     ]
   },
 
   /**
@@ -20,7 +48,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.setData({
+      screenHeight: app.globalData.systemInfo.windowHeight
+    })
   },
 
   /**
@@ -58,12 +88,6 @@ Page({
   
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
   toNearPage: function () {
     wx.redirectTo({
       url: '../near/near'

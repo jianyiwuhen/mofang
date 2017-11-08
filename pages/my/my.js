@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+     moneyBag:0.00,
+     yhTicket:1
   },
 
   /**
@@ -20,7 +21,11 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.setData({
+      userInfo: app.globalData.userInfo,
+      hasUserInfo: true
+    })
+    console.log(app.globalData.userInfo)
   },
 
   /**
@@ -58,12 +63,6 @@ Page({
   
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
   toNearPage: function () {
     wx.redirectTo({
       url: '../near/near'

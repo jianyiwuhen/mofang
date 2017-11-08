@@ -6,7 +6,52 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    companyList: [
+      {
+        name: "CoCo都可",
+        position: 500,
+        pingfen: 4.5,
+        monthYd: 100,
+        img: 'http://img3.imgtn.bdimg.com/it/u=689314955,515992096&fm=27&gp=0.jpg'
+      },
+      {
+        name: "CoCo都可",
+        position: 500,
+        pingfen: 4.5,
+        monthYd: 100,
+        img: 'http://img3.imgtn.bdimg.com/it/u=689314955,515992096&fm=27&gp=0.jpg'
+      }, {
+        name: "CoCo都可",
+        position: 500,
+        pingfen: 4.5,
+        monthYd: 100,
+        img: 'http://img3.imgtn.bdimg.com/it/u=689314955,515992096&fm=27&gp=0.jpg'
+      }, {
+        name: "CoCo都可",
+        position: 500,
+        pingfen: 4.5,
+        monthYd: 100,
+        img: 'http://img3.imgtn.bdimg.com/it/u=689314955,515992096&fm=27&gp=0.jpg'
+      },
+      {
+        name: "CoCo都可",
+        position: 500,
+        pingfen: 4.5,
+        monthYd: 100,
+        img: 'http://img3.imgtn.bdimg.com/it/u=689314955,515992096&fm=27&gp=0.jpg'
+      }, {
+        name: "CoCo都可",
+        position: 500,
+        pingfen: 4.5,
+        monthYd: 100,
+        img: 'http://img3.imgtn.bdimg.com/it/u=689314955,515992096&fm=27&gp=0.jpg'
+      }
+
+    ],
+    stars: [0, 1, 2, 3, 4],
+    normalSrc: '../images/normal.png',
+    selectedSrc: '../images/selected.png',
+    halfSrc: '../images/half.png'
   },
 
   /**
@@ -20,7 +65,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.setData({
+      screenHeight: app.globalData.systemInfo.windowHeight
+    })
   },
 
   /**
@@ -83,5 +130,11 @@ Page({
     wx.redirectTo({
       url: '../index/index'
     })
+  },
+  refresh: function () {
+    console.log('aa')
+  },
+  more: function () {
+    console.log('bb')
   }
 })

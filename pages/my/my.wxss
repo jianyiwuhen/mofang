@@ -1,0 +1,80 @@
+.my .userAvatar{
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+   border: solid 1px #ddd;
+}
+.my .userImgPanel{
+  width: 70px;
+  float:left;
+}
+.my .userinfo{
+  padding:10px 5%;
+  background-color: #008de1
+}
+.my .userName{
+  color:#fff;
+  float:left;
+  width:70%;
+}
+.my .moneyBag{
+  display: inline-block;
+  width: 49%;
+  border-right: 1px solid #ddd;
+  text-align: center;
+  font-size:12px;
+    border-bottom: 1px solid #ddd;
+     padding:5px 0;
+}
+.my .yhTicket{
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  font-size:12px;
+  border-bottom: 1px solid #ddd;
+  padding:5px 0;
+}
+.my .moneyInfo{
+}
+.my .moneyNum{
+  color:#008de1;
+  font-size:14px;
+  font-weight:600;
+  margin-bottom:3px;
+}
+.my .ticketNum{
+  color:#ff4400;
+    font-size:14px;
+  font-weight:600;
+  margin-bottom:3px;
+}
+.my .hr{
+  height: 10px;
+  background-color: #ddd;
+}
+
+.my .doList{
+  font-size:14px;
+  color:#666;
+}
+.my .doDom{
+  border-bottom:1px solid #ddd;
+   padding:0 10px;
+   height: 40px;
+   line-height: 40px;
+}
+.my .fa-chevron-right{
+  float:right;
+  margin-right:20px;
+  font-size: 14px;
+  color:#999;
+  margin-top:8px;
+}
+.my .fa-heart{
+  margin-right: 5px;
+  color:#ff4400;
+}
+.my .fa-building{
+  margin-right: 5px;
+  color:#008de1;
+}

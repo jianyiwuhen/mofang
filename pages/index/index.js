@@ -35,6 +35,25 @@ Page({
           pingfen: 4.5,
           monthYd: 100,
           img: 'http://img3.imgtn.bdimg.com/it/u=689314955,515992096&fm=27&gp=0.jpg'
+        }, {
+          name: "CoCo都可",
+          position: 500,
+          pingfen: 4.5,
+          monthYd: 100,
+          img: 'http://img3.imgtn.bdimg.com/it/u=689314955,515992096&fm=27&gp=0.jpg'
+        },
+        {
+          name: "CoCo都可",
+          position: 500,
+          pingfen: 4.5,
+          monthYd: 100,
+          img: 'http://img3.imgtn.bdimg.com/it/u=689314955,515992096&fm=27&gp=0.jpg'
+        }, {
+          name: "CoCo都可",
+          position: 500,
+          pingfen: 4.5,
+          monthYd: 100,
+          img: 'http://img3.imgtn.bdimg.com/it/u=689314955,515992096&fm=27&gp=0.jpg'
         }
 
     ],
@@ -44,7 +63,6 @@ Page({
     halfSrc: '../images/half.png'
   },
   onLoad: function () {
-
     wx.setNavigationBarTitle({ title: '首页' })
     if (app.globalData.userInfo) {
       this.setData({
@@ -97,8 +115,9 @@ Page({
     })
   },
   onReady: function () {
-
-    
+    this.setData({
+      screenHeight: app.globalData.systemInfo.windowHeight
+    })
   },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
@@ -142,6 +161,12 @@ Page({
   onShareAppMessage: function () {
 
   },
+  refresh:function(){
+   console.log('aa')
+  },
+  more:function(){
+    console.log('bb')
+  }
 /*  selectLeft: function (e) {
     var key = e.currentTarget.dataset.key
     if (this.data.key == 0.5 && e.currentTarget.dataset.key == 0.5) {

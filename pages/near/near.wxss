@@ -1,0 +1,70 @@
+.near .cpPanel{
+  padding:0 5%;
+  margin-bottom:40px;
+  width: 90%
+}
+.near .cpTop{
+  font-size:12px;
+  font-weight:600;
+  margin-bottom:20px;
+  margin-top:10px;
+}
+.near .cpImg {
+  float:left;
+  width:70px;
+}
+.near .cpImg image{
+  width: 50px;
+  height: 50px;
+  border:1px solid #ddd;
+}
+.near .cpRight{
+  float:left;
+  width:75%
+}
+.near .cpName{
+   font-size:12px;
+   font-weight:600;
+}
+.near .hr{
+  height: 10px;
+  background-color: #ddd;
+  margin: 10px 0;
+}
+
+.near.star-image{
+  position: absolute;
+  top: 50rpx;
+  width: 20rpx;
+  height: 20rpx;
+}
+.near .item{
+  position: absolute;
+  top: 50rpx;
+  width: 75rpx;
+  height: 150rpx;
+}
+.near  .cpPf{
+  font-size:12px;
+  display: inline-block;
+  margin-left:5px;
+  color:#ff4400;
+}
+.near  .cpPfPanel{
+  margin-top:3px;
+}
+.near  .monNum,.near .position{
+  float: right;
+  color:#999;
+  margin-right:10px;
+  font-size:12px;
+}
+.near .cpBottom{
+  border-bottom:solid 1px #ddd;
+  font-size:12px;
+   color:#999;
+   padding-bottom:5px;
+}
+.near .companyInfo{
+ margin-bottom:30px;
+}
