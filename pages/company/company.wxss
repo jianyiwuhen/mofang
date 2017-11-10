@@ -1,0 +1,192 @@
+
+.company .ciPanel{
+  padding:10px 5% 0;
+  background-color:#008de1;
+  height:70px;
+  color: #fff;
+
+}
+.company .ciInfo{
+  float: left;
+  width: 75%;
+  margin-left:15px;
+  font-size:12px;
+}
+.company .ciImg{
+  width: 50px;
+  float: left;
+}
+.company .ciImg image{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border:1px solid #ddd;
+}
+.company .takeBtn{
+  margin-top:5px;
+  color:#eee;
+}
+.company.star-image{
+  position: absolute;
+  top: 50rpx;
+  width: 20rpx;
+  height: 20rpx;
+}
+
+.company  .ciPf{
+  font-size:12px;
+  display: inline-block;
+  margin-left:5px;
+  color:#ff4400;
+}
+.company .ciTab{
+  height: 30px;
+  line-height: 30px;
+  font-size:14px;
+  color:#222;
+  border: 1px solid #ddd;
+}
+.company .ciTab label{
+  display: inline-block;
+  width: 20%;
+  text-align:center;
+}
+.company .ciTab .active{
+  color:#008de1;
+  border-bottom:2px solid #008de1;
+}
+
+.company .buyCar{
+  position: fixed;
+  bottom:0;  
+  height: 30px;
+  line-height: 30px;
+  background-color: #666;
+  color:#fff;
+  padding:0 5%;
+  width: 100%;
+  font-size: 14px;
+  filter:alpha(Opacity=90);-moz-opacity:0.9;opacity: 0.9;
+}
+.company .fa-shopping-cart{
+  color:#ff4400;
+  margin-right:5px;
+  font-size:16px;
+}
+.company  .lefeMenu{
+  width: 20%;
+  border-right: 1px solid #ddd;
+  font-size:12px;
+  color:#666;
+  float:left;
+
+}
+.company .rightGoods{
+  width: 79%;
+  border-right: 1px solid #ddd;
+  font-size:12px;
+  color:#666;
+  float:right;
+}
+.company  .lefeMenu .menuTab{
+  padding-left:5px;
+  height: 40px;
+  line-height: 40px;
+  border-bottom:1px solid #ddd;
+  width: 100%;
+  background-color: #eee;
+  display: inline-block;  
+  padding: auto 0;
+}
+.company  .menuTypeHr{
+   font-size:12px;
+   font-weight: 600;
+   color:#666;
+   border-bottom:1px solid #ddd;
+   padding:5px 10px;
+}
+.company .jianhao{
+  position:absolute;
+  right:0;
+}
+.company .fa-minus-circle{
+  color: rgb(255, 62, 30);
+  font-size:14px;
+}
+.company .jiahao{
+  font-size:30px;
+  font-weight: 600;
+  color:#666;
+  width: 100%;
+  text-align: center;
+}
+.company .takeOrder{
+  background-color:#228a06;
+  float: right;
+  height:30px;
+  line-height: 30px; 
+  padding:0 15px;
+}
+.company  .bookTicker{
+  background-color:#008de1;
+  float: right;
+  height:30px;
+  line-height: 30px; 
+  padding:0 15px;
+  width: 45px;
+}
+.company .totalPrice{
+  display: inline-block;
+  color:#ff4400;
+  padding:0 auto;
+  font-weight: 600;
+  margin-left:30px ;
+}
+.company .goodInfo{
+  margin:20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom:10px; 
+}
+.company .goodImg{
+  width: 70px;
+  float: left;
+}
+.company .goodImg image{
+  width: 60px;
+  height: 60px;
+  border:solid 1px #ddd;
+  border-radius: 5px;
+}
+.company  .goodRight{
+  float:left;
+  width: 65%;
+  line-height: 20px;
+}
+.company .goodName{
+  color:#000;
+  font-weight: 600;
+  font-size:13px;
+
+}
+.company .goodPrice{
+  color: #ff4400;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.company .addCar{
+  float:right;
+  color:#fff;
+  background-color: #008de1;
+  border-radius: 10px;
+  padding:2px 10px;
+  display: inline-block;
+  font-size:12px;
+}
+
+.company .goodAdd{
+  font-size:50px;
+  color:#666;
+  text-align: center;
+  margin-bottom:10px;
+}

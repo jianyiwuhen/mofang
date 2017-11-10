@@ -1,0 +1,59 @@
+<scroll-view class="company" scroll-y="true" style="height: {{screenHeight}}px;"  scroll-top="0">
+    <view class='ciPanel'>
+       <view class='ciImg'><image src="{{companyImg}}"></image></view>
+       <view class='ciInfo'>
+          <view>{{companyName}}</view>
+          <view>
+              <block wx:for="{{stars}}" wx:for-item="itemName">
+                <image class="star-image" style="width:10px;height:10px;left: {{itemName*150}}rpx" src="{{pingfen > itemName ?(pingfen-itemName == 0.5?halfSrc:selectedSrc) : normalSrc}}">
+                </image>
+              </block>
+                <label class='ciPf'>{{pingfen}}分</label>
+          </view>
+          <view class='takeBtn'><label>联系商家</label>  |  <label>导航</label></view>
+       </view>
+    </view>
+    <view class='ciTab'>
+       <label class='{{ciType=="1"?"active":""}}' data-type="1" bindtap='changeTab'>商品</label>
+       <label class='{{ciType=="2"?"active":""}}' data-type="2" bindtap='changeTab'>评价</label>
+    </view>
+    <view class='goods' style='display:{{ciType=="1"?"block":"none"}}'>
+       <!--左侧菜单分类-->
+       <scroll-view class='lefeMenu' scroll-y="true" style="height: {{screenHeight-40}}px;"  scroll-top="0">
+             <view wx:for="{{menuList}}">
+                <view data-type="{{item.menuType}}" class='menuTab'>{{item.menuName}}<label class='jianhao fa fa-minus-circle'></label></view>
+             </view>
+             <view class='jiahao'>+</view>
+             <view style='height:40px;'></view>
+       </scroll-view>
+       <!--右侧商品列表-->
+       <scroll-view class='rightGoods' scroll-y="true" style="height: {{screenHeight-40}}px;"  scroll-top="0">
+            <view wx:for="{{menuList}}">
+                <view class='menuTypeHr' data-type="{{item.menuType}}">{{item.menuName}}</view>
+                <view wx:for="{{goodsList}}"  wx:for-item="good">
+                      <view wx:if="{{good.menuType==item.menuType}}" class='goodInfo'>
+                          <view class='goodImg'><image src='{{good.goodsImg}}'></image></view>
+                          <view class='goodRight'>
+                             <view class='goodName'>{{good.goodsName}}</view>
+                             <view class='goodNum'>已售{{good.goodsNum}}单</view>
+                             <view class='goodPrice'>￥{{good.goodsPrice}}<label class='addCar'>加入购物车</label></view>
+                          </view>
+                          <view class='clear'></view>
+                      </view>
+                </view>
+                <view class='goodAdd'>+</view>
+             </view>
+             <view style='height:40px;'></view>
+       </scroll-view>
+    <!--底部购物车-->
+    <view class="buyCar">
+          <label class='fa fa-shopping-cart'></label>购物车({{goodNum}})
+          <label class='totalPrice'>￥{{totalPrice}}</label>
+          <label class="bookTicker">订座</label>
+          <label class='takeOrder'>下单</label>
+          </view>
+    </view>
+    <view class='pengjia' style='display:{{ciType=="2"?"block":"none"}}'>
+         bb
+    </view>
+</scroll-view>

@@ -63,6 +63,11 @@ Page({
     halfSrc: '../images/half.png'
   },
   onLoad: function () {
+    setTimeout(function(){
+      wx.navigateTo({
+        url: '../company/company'
+      })
+    })
     wx.setNavigationBarTitle({ title: '首页' })
     if (app.globalData.userInfo) {
       this.setData({
@@ -166,6 +171,19 @@ Page({
   },
   more:function(){
     console.log('bb')
+  },
+  //联系商家
+  callCompany:function(){
+   console.log('aa')
+  },
+  //导航
+  navigateMap:function(){
+    console.log('bb')
+  },
+  toCompany:function(){
+    wx.navigateTo({
+      url:'../company/company?id=1'
+    })
   }
 /*  selectLeft: function (e) {
     var key = e.currentTarget.dataset.key
