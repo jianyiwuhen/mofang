@@ -1,0 +1,73 @@
+@import "../welCropper/welCropper.wxss";
+.joinCompany{
+  padding:10px 5%;
+}
+.joinCompany .jcHr{
+  height: 50px;
+  line-height: 50px;
+}
+.joinCompany .jcTitle{
+  display: inline-block;
+  width: 20%;
+  font-size:13px;
+
+}
+.joinCompany .jcInp input{
+  width: 75%;
+  border:solid 1px #ddd;
+  display: inline-block;
+  vertical-align: middle;
+  height: 20px;
+  font-size:13px;
+  padding-left:5px;
+}
+.joinCompany .jcInp .picker{
+  width:100%;
+  border:solid 1px #ddd;
+  display: inline-block;
+  height: 20px;
+  font-size:13px;
+  padding-left:5px;
+  line-height: 20px;
+}
+.joinCompany .jcInp picker{
+  width: 75%;
+  display: inline-block;
+   height: 20px;
+}
+.joinCompany .jcInp .phoneNumber{
+  width: 60%;
+}
+.joinCompany .phoneBtn{
+  background-color: #008de1;
+  font-size:13px;
+  display: inline-block;
+  padding: 3px 10px;
+  height: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+  color:#fff;
+  margin-left:10px;
+}
+.joinCompany .phoneBtned{
+  background-color: #aaa;
+  font-size:13px;
+  display: inline-block;
+  padding: 3px 10px;
+  height: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+  color:#fff;
+  margin-left:10px;
+}
+.joinCompany .uploadImg{
+    background-color: #008de1;
+     font-size:13px;
+  display: inline-block;
+  padding: 3px 10px;
+  height: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+  color:#fff;
+  margin-left:10px;
+}

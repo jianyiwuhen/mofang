@@ -65,7 +65,7 @@ Page({
   onLoad: function () {
     setTimeout(function(){
       wx.navigateTo({
-        url: '../company/company'
+        url: '../joinCompany/joinCompany'
       })
     })
     wx.setNavigationBarTitle({ title: '首页' })
@@ -99,7 +99,7 @@ Page({
     var that = this;
     
     var BMap = new bmap.BMapWX({
-      ak: app.globalData.baiduAk
+      ak: 'EjKYHmC3hj9ezfw9maDwgRyY5lPIoYK5'
     }); 
     BMap.regeocoding({
       fail: function (data) {
