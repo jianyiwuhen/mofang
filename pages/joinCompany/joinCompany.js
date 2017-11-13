@@ -1,8 +1,5 @@
 const app = getApp()
-const device = app.globalData.systemInfo
-const W = device.windowWidth
-const H = device.windowHeight - 50
-let cropper = require('../welCropper/welCropper.js');
+var bmap = require('../lib/bmap-wx.min.js'); 
 // pages/mfIndex/mfIndex.js
 Page({
 
@@ -10,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+
     foodType: [{
       typeName:'美食',
       typeId:1
@@ -30,15 +28,30 @@ Page({
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '注册商家' })
     var that = this
-    // 初始化组件数据和绑定事件
-    cropper.init.apply(that, [W, H]);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+     this.setData({
+       address: app.globalData.address,
+       latitude:app.globalData.latitude,
+       longitude:app.globalData.longitude,
+       markers: [{
+         latitude: app.globalData.latitude,
+         longitude: app.globalData.longitude,
+         callout: {
+           content: app.globalData.address,
+           display: 'BYCLICK',
+           borderRadius: '10',
+           padding: 10,
+           color: '#000'
+         }
+       }]
+     })
+
+
   },
 
   /**
@@ -89,7 +102,30 @@ Page({
   },
   //获取验证码
   phoneSubmit:function(){
-     
+    var regTel = /^0?1[3|4|5|8|9|2|6|7][0-9]\d{8}$/;
+    if(regTel.test(this.data.phoneNum)){
+           wx.request({
+             url: app.globalData.domain +"/company/sendShortNum" ,
+             data: {
+               phoneNum: this.data.phoneNum
+             },
+             header: {
+               'Content-Type': 'application/x-www-form-urlencoded'
+             },
+             method: 'post',
+             success:function(data){
+                 console.log(data);
+             }
+           })
+    }else{
+      wx.showToast({
+        title:'电话号码错误',
+        duration:2000,
+        mask:true,
+        image:'../images/error.png'
+      })
+    }
+
   },
   //获取手机号码并验证
   getPhoneNum:function(e){
@@ -108,35 +144,37 @@ Page({
         success(res) {
           const tempFilePath = res.tempFilePaths[0]
           console.log(tempFilePath)
-
-          // 将选取图片传入cropper，并显示cropper
-          // mode=rectangle 返回图片path
-          // mode=quadrangle 返回4个点的坐标，并不返回图片。这个模式需要配合后台使用，用于perspective correction
-          let modes = ["rectangle", "quadrangle"]
-          let mode = modes[0]   //rectangle, quadrangle
-          that.showCropper({
-            src: tempFilePath,
-            mode: mode,
-            sizeType: ['original', 'compressed'],   //'original'(default) | 'compressed'
-            callback: (res) => {
-              if (mode == 'rectangle') {
-                console.log("crop callback:" + res)
-                wx.previewImage({
-                  current: '',
-                  urls: [res]
-                })
-              }
-              else {
-                wx.showModal({
-                  title: '',
-                  content: JSON.stringify(res),
-                })
-              }
-
-              // that.hideCropper() //隐藏，我在项目里是点击完成就上传，所以如果回调是上传，那么隐藏掉就行了，不用previewImage
-            }
-          })
+         
         }
       })
-  }
+  },
+  //百度地图检索
+  bindKeyInput: function (e) {
+    var that = this;
+    // 新建百度地图对象 
+    var BMap = new bmap.BMapWX({
+      ak: app.globalData.baiduAk
+    }); 
+    var fail = function (data) {
+      console.log(data)
+    };
+    var success = function (data) {
+      var sugData = '';
+      for (var i = 0; i < data.result.length; i++) {
+        sugData = sugData + data.result[i].name + '\n';
+        if(i>5) break;
+      }
+      that.setData({
+        sugData: sugData
+      });
+    }
+    // 发起suggestion检索请求 
+    BMap.suggestion({
+      query: e.detail.value,
+      region: app.globalData.cityName,
+      city_limit: true,
+      fail: fail,
+      success: success
+    });
+  } 
 })

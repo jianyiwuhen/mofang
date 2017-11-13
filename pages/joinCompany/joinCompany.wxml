@@ -32,11 +32,14 @@
   </view>
   <view class='jcHr'> 
       <label class="jcTitle">验证码：</label>
-      <label class='jcInp'><input type='text' maxlength='4' style='width:40%'></input></label>
+      <label class='jcInp'><input type='text' maxlength='4' style='width:100px;'></input></label>
   </view>
   <view class='jcHr'>
     <label class="jcTitle">地址：</label>
-    <label class='jcInp'><input type='text'></input></label>
+    <label class='jcInp'><input type='text' value='{{address}}' bindinput="bindKeyInput"></input></label>
+    <view class="sug_info"> 
+      <text>{{sugData}}</text> 
+    </view>
   </view>
- <!-- <view ><map style='width:90%'></map></view>-->
+  <view style='margin-top:10px;border:1px solid #ddd;'><map markers='{{markers}}' longitude="{{longitude}}" latitude="{{latitude}}" style='width:100%'></map></view>
 </view>

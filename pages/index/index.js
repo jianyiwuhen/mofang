@@ -66,7 +66,7 @@ Page({
     setTimeout(function(){
       wx.navigateTo({
         url: '../joinCompany/joinCompany'
-      })
+      },2000)
     })
     wx.setNavigationBarTitle({ title: '首页' })
     if (app.globalData.userInfo) {
@@ -99,7 +99,7 @@ Page({
     var that = this;
     
     var BMap = new bmap.BMapWX({
-      ak: 'EjKYHmC3hj9ezfw9maDwgRyY5lPIoYK5'
+      ak: app.globalData.baiduAk
     }); 
     BMap.regeocoding({
       fail: function (data) {
@@ -111,9 +111,11 @@ Page({
           that.setData({
             address: ad.formatted_address.replace(ad.addressComponent.province, '')
           })
+          app.globalData.address = ad.formatted_address
           app.globalData.latitude = data.wxMarkerData[0].latitude
           app.globalData.longitude = data.wxMarkerData[0].longitude
           app.globalData.cityCode = ad.cityCode
+          app.globalData.cityName=ad.addressComponent.province
         //把所有数据放在初始化data内    
 
       }     

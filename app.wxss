@@ -10,7 +10,6 @@
 } 
 @font-face {
     font-family: 'FontAwesome';
-    src: url('FontAwesome.eot');
     font-weight: normal;
     font-style: normal;
 }
@@ -2359,6 +2358,7 @@
   font-size:14px;
   color:#aaa;
   padding-top:5px;
+  background: #fff;
 }
  .footer view{
   width:25%;
@@ -2371,4 +2371,11 @@
 }
  .footer .active{
   color:#008de1;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}.clear{
+  clear: both;
 }

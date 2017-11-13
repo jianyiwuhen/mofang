@@ -1,4 +1,4 @@
-@import "../welCropper/welCropper.wxss";
+
 .joinCompany{
   padding:10px 5%;
 }
@@ -8,35 +8,39 @@
 }
 .joinCompany .jcTitle{
   display: inline-block;
-  width: 20%;
+  width: 25%;
   font-size:13px;
 
 }
+.joinCompany .jcInp{
+  width: 70%;
+}
 .joinCompany .jcInp input{
-  width: 75%;
   border:solid 1px #ddd;
   display: inline-block;
   vertical-align: middle;
-  height: 20px;
   font-size:13px;
   padding-left:5px;
+  width: 200px;
+  height: 25px;
 }
 .joinCompany .jcInp .picker{
-  width:100%;
+  width: 200px;
   border:solid 1px #ddd;
   display: inline-block;
-  height: 20px;
+  height: 25px;
   font-size:13px;
   padding-left:5px;
   line-height: 20px;
 }
+
 .joinCompany .jcInp picker{
-  width: 75%;
+  width: 70%;
   display: inline-block;
    height: 20px;
 }
 .joinCompany .jcInp .phoneNumber{
-  width: 60%;
+  width: 150px;
 }
 .joinCompany .phoneBtn{
   background-color: #008de1;
