@@ -150,6 +150,9 @@ Page({
   },
   //百度地图检索
   bindKeyInput: function (e) {
+    if (e.detail.value.length < 8 || e.detail.value.length%2!=0){
+      return;
+    }
     var that = this;
     // 新建百度地图对象 
     var BMap = new bmap.BMapWX({
