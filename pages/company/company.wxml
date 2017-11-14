@@ -54,6 +54,6 @@
           </view>
     </view>
     <view class='pengjia' style='display:{{ciType=="2"?"block":"none"}}'>
-         bb
+         
     </view>
 </scroll-view>

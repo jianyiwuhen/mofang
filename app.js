@@ -44,7 +44,8 @@ App({
     address:'',
     baiduAk:'EjKYHmC3hj9ezfw9maDwgRyY5lPIoYK5',
     appid:'wx2b738a908bec3d75',
-    secret:'36b7c03afc38ab473ee00bca135d69c2'
+    secret:'36b7c03afc38ab473ee00bca135d69c2',
+    imgUrl:"http://ozea6q8t6.bkt.clouddn.com/"
 
   },
   //获取当前位置

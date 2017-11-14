@@ -2,16 +2,15 @@
 <view class='joinCompany'>
   <view class='jcHr'>
     <label class="jcTitle">店名：</label>
-    <label class='jcInp'><input type='text' placeholder='请填写一个您想要的店名'></input></label>
+    <label class='jcInp'><input type='text' maxlength='10' placeholder='请填写一个您想要的店名（10字内）' bindinput='getCompanyName'></input></label>
   </view>
   <view class='jcHr'>
     <label class="jcTitle">店铺图标：</label>
     <label class='jcInp'>
-
         <label bindtap='uploadImg' class="uploadImg">选择上传图片</label>
-        
     </label>
   </view>
+  <view wx:if="{{uploadImg}}"> <image src='{{uploadImg}}'></image></view>
   <view class='jcHr'>
     <label class="jcTitle">店铺类型：</label>
     <label class='jcInp'> 
@@ -25,21 +24,32 @@
   <view class='jcHr'>
     <label class="jcTitle">联系电话：</label>
     <label class='jcInp'>
-        <input type='text' class='phoneNumber' maxlength='11' bindblur='getPhoneNum'></input>
+        <input type='text' class='phoneNumber' maxlength='11' bindinput='getPhoneNum'></input>
         <label wx:if="{{phoneStatu==1}}" class='phoneBtn' bindtap='phoneSubmit'>提交</label>
         <label wx:else class='phoneBtned'>{{phoneTime}}秒后重发</label>
     </label>
   </view>
   <view class='jcHr'> 
       <label class="jcTitle">验证码：</label>
-      <label class='jcInp'><input type='text' maxlength='4' style='width:100px;'></input></label>
+      <label class='jcInp'><input type='text' maxlength='4' bindinput='getPhoneCode' style='width:100px;'></input></label>
   </view>
   <view class='jcHr'>
     <label class="jcTitle">地址：</label>
-    <label class='jcInp'><input type='text' value='{{address}}' bindinput="bindKeyInput"></input></label>
-    <view class="sug_info"> 
-      <text>{{sugData}}</text> 
-    </view>
+    <label class='jcInp'>
+      <input type='text' value='{{address}}' bindinput="bindKeyInput"></input>
+        <view class="sug_info" wx:if="{{!mapStatus}}"> 
+        <view  class='addressHr' wx:for="{{sugData}}" wx:for-item="i">
+           <label bindtap='chooseAddress' data-address="{{i.name}}" data-lat="{{i.location.lat}}" data-lng="{{i.location.lng}}">{{i.name}}</label>
+        </view>
+      </view>
+    </label>
   </view>
-  <view style='margin-top:10px;border:1px solid #ddd;'><map markers='{{markers}}' longitude="{{longitude}}" latitude="{{latitude}}" style='width:100%'></map></view>
+  <view wx:if="{{mapStatus}}" style='margin-top:10px;border:1px solid #ddd;'>
+      <map markers='{{markers}}' longitude="{{mapLng}}" latitude="{{mapLat}}" style='width:100%;z-index:1;'>
+      
+      </map>
+  </view>
+  <view class='jcHr'>
+     <label bindtap='newCompany' class='newCompany'>新建商家</label>
+  </view>
 </view>

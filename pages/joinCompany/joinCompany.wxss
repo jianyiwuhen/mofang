@@ -40,7 +40,7 @@
    height: 20px;
 }
 .joinCompany .jcInp .phoneNumber{
-  width: 150px;
+  width: 100px;
 }
 .joinCompany .phoneBtn{
   background-color: #008de1;
@@ -74,4 +74,33 @@
   vertical-align: middle;
   color:#fff;
   margin-left:10px;
+}
+.joinCompany .sug_info{
+background-color:#fff;
+margin-left:25%;
+border:1px solid #ddd;
+border-top:0;
+margin-top:-10px;
+width:200px;
+text-overflow:ellipsis;
+overflow:hidden;
+white-space:nowrap;
+}
+.joinCompany .addressHr{
+  font-size: 13px;
+  line-height: 25px;
+  height: 25px;
+}
+.joinCompany .addressHr:active{
+  background-color: #ddd;
+}
+.joinCompany .newCompany{
+  color: #fff;
+  background-color:#008de1;
+  font-size:13px;
+  display:inline-block;
+  padding:3px 10px;
+  height: 30px;
+  line-height: 30px;
+  margin :10px auto;
 }

@@ -1,5 +1,6 @@
 const app = getApp()
 var bmap = require('../lib/bmap-wx.min.js'); 
+var utils = require('../../utils/util.js'); 
 // pages/mfIndex/mfIndex.js
 Page({
 
@@ -19,7 +20,10 @@ Page({
         typeId: 3
       }],
     index: 0,
-    phoneStatu:1
+    phoneStatu:1,
+    mapStatus:true,
+    phoneTime:60
+
   },
 
   /**
@@ -36,8 +40,8 @@ Page({
   onReady: function () {
      this.setData({
        address: app.globalData.address,
-       latitude:app.globalData.latitude,
-       longitude:app.globalData.longitude,
+       mapLat:app.globalData.latitude,
+       mapLng:app.globalData.longitude,
        markers: [{
          latitude: app.globalData.latitude,
          longitude: app.globalData.longitude,
@@ -102,6 +106,7 @@ Page({
   },
   //获取验证码
   phoneSubmit:function(){
+    var that=this;
     var regTel = /^0?1[3|4|5|8|9|2|6|7][0-9]\d{8}$/;
     if(regTel.test(this.data.phoneNum)){
            wx.request({
@@ -114,7 +119,23 @@ Page({
              },
              method: 'post',
              success:function(data){
-                 console.log(data);
+                   that.setData({
+                     phoneStatu:2,
+                   })
+                   //时间倒计时
+                  var ti= setInterval(function(){
+                    var phoneTime = that.data.phoneTime-1;
+                    if (phoneTime==0){
+                      that.setData({
+                        phoneStatu: 1,
+                        phoneTime:60
+                      })
+                    }else{
+                      that.setData({
+                        phoneTime: phoneTime
+                      })
+                    }
+                  },1000)
              }
            })
     }else{
@@ -136,15 +157,51 @@ Page({
   },
   uploadImg:function(){
       var that = this
-
+      var key = Math.random().toString(15).substr(2);
+      //选择图片
       wx.chooseImage({
         count: 1, // 默认9
         sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
         success(res) {
           const tempFilePath = res.tempFilePaths[0]
-          console.log(tempFilePath)
-         
+          //获取上传TOKEN
+          wx.request({
+            url: app.globalData.domain + "/company/getQiniuToken",
+            header: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            method: 'get',
+            success: function (data) {
+                   //上传图片
+                  wx.uploadFile({
+                      url: 'https://up.qbox.me',
+                      filePath: tempFilePath,
+                      name: 'file',
+                      formData: {
+                          'token': data.data,//刚刚获取的上传凭证
+                          'key': key//这里是为文件设置上传后的文件名
+                      },
+                      success: function (r) {
+                        if (JSON.parse(r.data).key!=undefined){
+                          wx.showToast({
+                            title: '上传成功',
+                            duration: 2000,
+                            mask: true
+                          })
+                          that.setData({
+                            uploadImg: app.globalData.imgUrl + JSON.parse(r.data).key
+                          })
+                        }
+
+                       },
+                  fail: function (res) {
+                      console.log(res)
+                  }
+                })
+            }
+          })
+          
         }
       })
   },
@@ -163,13 +220,18 @@ Page({
     };
     var success = function (data) {
       var sugData = '';
-      for (var i = 0; i < data.result.length; i++) {
-        sugData = sugData + data.result[i].name + '\n';
-        if(i>5) break;
+      if (data.result.length==0){
+        that.setData({
+          mapStatus:true,
+          sugData: [],
+        });
+      }else{
+        that.setData({
+          sugData: data.result,
+          mapStatus: false
+        });
       }
-      that.setData({
-        sugData: sugData
-      });
+
     }
     // 发起suggestion检索请求 
     BMap.suggestion({
@@ -179,5 +241,41 @@ Page({
       fail: fail,
       success: success
     });
+  },
+  //选择地址
+  chooseAddress:function(e){
+    this.setData({
+      sugData: [],
+      mapStatus: true,
+      mapLat: e.target.dataset.lat,
+      mapLng: e.target.dataset.lng,
+      address: e.target.dataset.address,
+      markers: [{
+        latitude: e.target.dataset.lat,
+        longitude: e.target.dataset.lng,
+        callout: {
+          content: e.target.dataset.address,
+          display: 'BYCLICK',
+          borderRadius: '10',
+          padding: 10,
+          color: '#000'
+        }
+      }]
+    });
+  },
+  getCompanyName:function(){
+     this.setData({
+       companyName: e.detail.value
+     })
+  },
+  getPhoneCode:function(){
+    this.setData({
+      phoneCode: e.detail.value
+    })
+  },
+  //新建商家
+  newCompany:function(){
+   
+    
   } 
 })
